@@ -16,16 +16,16 @@ mongoose.connect(config.mongodbUri,(err)=>{
 })
 
 app.use(express.json())
-
+app.use(express.static(path.join(__dirname,'public')))
 
 
 //route
 app.use('/api/v1',require('./server/routes/v1'))
 app.use('/api/v2',require('./server/routes/v2'))
 
-express.static(path.join(__dirname,'public'))
+
 app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname,'public','index.html'))
+    res.sendFile(path.resolve(__dirname,'public','index.html'))
 })
 
 
