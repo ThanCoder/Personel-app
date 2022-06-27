@@ -18,10 +18,10 @@ mongoose.connect(config.mongodbUri,(err)=>{
 app.use(express.json())
 app.use(express.static(path.join(__dirname,'public')))
 
-
-//route
-app.use('/api/v1',require('./server/routes/v1'))
-app.use('/api/v2',require('./server/routes/v2'))
+const routes = require('./server/routes')
+//routes
+app.use('/api/v1',routes.v1)
+app.use('/api/v2',routes.v2)
 
 
 app.get('*',(req,res)=>{
@@ -30,4 +30,4 @@ app.get('*',(req,res)=>{
 
 
 const port = process.env.PORT || 5000;
-app.listen(port,()=> console.log("server running on port "+port))
+app.listen(port,()=> console.log("server running on port http://localhost:"+port))

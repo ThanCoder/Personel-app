@@ -19,15 +19,16 @@ router.post('/user/register',controller.userController.register)
 router.get('/novel-app',controller.novelAppController.getAll);
 router.get('/novel-app-latest',controller.novelAppController.getLatest);
 router.post('/novel-app',controller.novelAppController.add);
+router.put('/novel-app/:id',controller.novelAppController.update);
 router.delete('/novel-app/:id',controller.novelAppController.delete);
 
 //Movie
-// router.get('/movies',movieController.getMovies)
-// router.get('/movie/:id',movieController.getMovie)
-// router.post('/movie',movieController.addMovie)
-// router.post('/movie-multiple',movieController.addMovieMultiple)
-// router.put('/movie/:id',movieController.updateMovie)
-// router.delete('/movie/:id',movieController.deleteMovie)
+router.get('/movies',controller.movieController.getAll)
+router.get('/movie/:id',controller.movieController.getOne)
+router.post('/movie',controller.movieController.addOne)
+// router.post('/movie-multiple',controller.movieController)
+router.put('/movie/:id',controller.movieController.updateOne)
+router.delete('/movie/:id',controller.movieController.deleteOne)
 
 // //Apyar
 // router.get('/apyars',apyarController.getApyars)

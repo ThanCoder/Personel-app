@@ -43,6 +43,20 @@ async function add(req,res){
     }
 }
 
+async function updateOne(req,res){
+    try {
+        if(req.params.id === undefined || req.params.id === '') throw 'req.params.id not found or empty!';
+
+        await NovelAppModel.updateOne({id:req.params.id},req.body)
+
+        res.status(200).json({id:req.params.id,success:true})
+        
+    } catch (error) {
+        res.status(500).json({error,id:req.params.id,success:false})
+    }
+}
+
+
 async function deleteOne(req,res){
     try {
         if(req.params.id === undefined || req.params.id === '') throw 'req.params.id not found or empty!';
@@ -62,5 +76,6 @@ module.exports = {
     getAll,
     getLatest,
     delete:deleteOne,
-    add
+    add,
+    update:updateOne
 }

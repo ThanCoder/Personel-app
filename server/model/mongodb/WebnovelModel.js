@@ -155,7 +155,7 @@ const novelApp = new mongoose.Schema({
         default:'Than'
     },
     [novel_app_fields.VERSION_CODE]:{
-        type:String,
+        type:Number,
         default:''
     },
     [novel_app_fields.TITLE]:{
