@@ -26,6 +26,7 @@ const chapter_fields = {
 const shareData_fields = {
     ID:"id",
     USER:'user',
+    NOTE:'note',
     NOVEL_ID:'novel_id',
     TITLE:'title',
     COVER_URL:'cover_url',
@@ -128,6 +129,10 @@ const shareData = new mongoose.Schema({
         default:''
     },
     [shareData_fields.NOVEL_ID]:{
+        type:String,
+        default:''
+    },
+    [shareData_fields.NOTE]:{
         type:String,
         default:''
     },

@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import ShareDataComponent from '../components/webnovel_sharedata/index.vue'
+import ShareDataComponent from '../components/sharedata/index.vue'
 </script>
 
 <style scoped>
