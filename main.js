@@ -25,7 +25,7 @@ app.use('/api/v2',routes.v2)
 
 
 app.get('*',(req,res)=>{
-    res.sendFile(path.resolve(config.clientPath,'index.html'))
+    res.sendFile(path.resolve(config.staticPath,'index.html'))
 })
 
 
