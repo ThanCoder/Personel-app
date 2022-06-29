@@ -16,7 +16,7 @@ mongoose.connect(config.mongodbUri,(err)=>{
 })
 
 app.use(express.json())
-app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(config.staticPath))
 
 const routes = require('./server/routes')
 //routes
@@ -25,7 +25,7 @@ app.use('/api/v2',routes.v2)
 
 
 app.get('*',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'public','index.html'))
+    res.sendFile(path.resolve(config.clientPath,'index.html'))
 })
 
 

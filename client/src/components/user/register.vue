@@ -1,0 +1,38 @@
+<template>
+  <div class="register">
+      <div class="header">Register</div>
+      <form class="t-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" placeholder="Name" id="name">
+        </div>
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" placeholder="User Name" id="username">
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" placeholder="Password" id="password">
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm</label>
+          <input type="password" placeholder="Confirm" id="confirm-password">
+        </div>
+        <div class="btn-group">
+          <div class="right">
+            <input type="submit" value="Register" class="btn">
+          </div>
+        </div>
+      </form>
+  </div>
+</template>
+
+<script setup>
+
+
+</script>
+
+<style>
+
+</style>

@@ -76,7 +76,7 @@ async function deleteOne(req,res){
     try {
         if(req.params.id === undefined || req.params.id === '') throw 'req.params.id not found or empty!';
 
-        await NovelAppModel.deleteOne({id:req.params.id})
+        await NovelAppModel.deleteOne({[novel_app_fields.ID]:req.params.id})
 
         res.status(200).json({id:req.params.id,success:true})
         
