@@ -5,14 +5,14 @@ const {
 
 async function getAll(req, res) {
   try {
-    let shareDataFiles = await ShareDataModel.find().sort({ date: -1 });
+    let shareDataFiles = await ShareDataModel.find().sort({ [shareData_fields.DATE]: -1 });
     res.status(200).json({ shareDataFiles });
   } catch (error) {
     res.status(500).json({ error });
   }
 }
 
-async function add(req, res) {
+async function addOne(req, res) {
   try {
     if (req.body === undefined) throw "reqest body not found!";
     if (req.body.title === undefined || req.body.title === "")
@@ -31,7 +31,7 @@ async function add(req, res) {
   }
 }
 
-async function update(req, res) {
+async function updateOne(req, res) {
   try {
     if (req.params.id === undefined || req.params.id === "")
     throw 'params "id" not found or empty!';
@@ -46,13 +46,14 @@ async function update(req, res) {
   }
 }
 
-async function deleteFile(req, res) {
+async function deleteOne(req, res) {
   try {
     if (req.params.id === undefined || req.params.id === "")
       throw 'params "id" not found or empty!';
 
       await ShareDataModel.deleteOne({'id':req.params.id})
-      cccccc
+      
+      res.status(200).json({id:req.params.id,success:true})
 
   } catch (error) {
     res.status(500).json({ error, success: false });
@@ -61,7 +62,7 @@ async function deleteFile(req, res) {
 
 module.exports = {
   getAll,
-  update,
-  add,
-  delete: deleteFile,
+  updateOne,
+  addOne,
+  deleteOne,
 };

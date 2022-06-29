@@ -1,13 +1,15 @@
 
-const webnovelShareDataController = require('./webnovel_sharedata')
+const shareDataController = require('./sharedata')
 const userController = require('./user')
 const novelAppController = require('./novel_app')
 const movieController = require('./movie')
+const apyarController = require('./apyar')
 
 
 module.exports = {
-    webnovelShareDataController,
+    shareDataController,
     userController,
     novelAppController,
-    movieController
+    movieController,
+    apyarController
 }

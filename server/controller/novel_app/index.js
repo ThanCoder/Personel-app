@@ -1,4 +1,6 @@
-const { NovelAppModel,novel_app_fields } = require('../../model');
+const { NovelAppModel,novel_app_fields,user_permission, user_fields } = require('../../model');
+const util = require('../../util')
+const config = require('../../../config')
 
 async function getAll(req,res){
     try {
@@ -24,6 +26,18 @@ async function getLatest(req,res){
 
 async function add(req,res){
     try {
+        let user = null;
+        let userPermissionCode = user_permission.NORMAL;
+        //check user
+        if(req.headers.token === undefined || req.headers.token === '') throw `"token" not found or empty!`
+        //get user
+        user = util.user.tokenVerify(req.headers.token).data;
+        //set permission
+        if(user !== null){
+            userPermissionCode = user[user_fields.USER_PERMISSION_STATUS]
+        }
+        
+
         if(req.body === undefined || req.body === '') throw `"req.body" not found or empty!`;
         //if(req.body.title === undefined || req.body.title === '') throw 'title not found or empty!'
         if(req.body[novel_app_fields.FILE_URL] === undefined || req.body[novel_app_fields.FILE_URL] === '') throw `"${novel_app_fields.FILE_URL}" not found or empty!`;
@@ -33,7 +47,8 @@ async function add(req,res){
 
         if(isFound !== null) throw `"${novel_app_fields.VERSION_CODE}" already exists!`
         
-        let newApp = new NovelAppModel(req.body)
+        
+        let newApp = new NovelAppModel({...req.body,user:user !== null ? user[user_fields.USER_NAME] : config.admin.username})
         newApp.save()
 
         res.status(201).json({newApp,success:true})

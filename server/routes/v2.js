@@ -3,10 +3,10 @@ const router = require('express').Router();
 const controller = require('../controller')
 
 //webnovel share data
-router.get('/webnovel-sharedata',controller.webnovelShareDataController.getAll)
-router.post('/webnovel-sharedata',controller.webnovelShareDataController.add)
-router.put('/webnovel-sharedata/:id',controller.webnovelShareDataController.update)
-router.delete('/webnovel-sharedata/:id',controller.webnovelShareDataController.delete)
+router.get('/sharedata',controller.shareDataController.getAll)
+router.post('/sharedata',controller.shareDataController.addOne)
+router.put('/sharedata/:id',controller.shareDataController.updateOne)
+router.delete('/sharedata/:id',controller.shareDataController.deleteOne)
 
 //user
 router.get('/user',controller.userController.getUsers)
@@ -24,18 +24,17 @@ router.delete('/novel-app/:id',controller.novelAppController.delete);
 
 //Movie
 router.get('/movies',controller.movieController.getAll)
-router.get('/movie/:id',controller.movieController.getOne)
+router.get('/movie',controller.movieController.getOne)
 router.post('/movie',controller.movieController.addOne)
-// router.post('/movie-multiple',controller.movieController)
 router.put('/movie/:id',controller.movieController.updateOne)
 router.delete('/movie/:id',controller.movieController.deleteOne)
 
 // //Apyar
-// router.get('/apyars',apyarController.getApyars)
-// router.get('/apyar/:id',apyarController.getApyar)
-// router.post('/apyar',apyarController.addApyar)
-// router.put('/apyar/:id',apyarController.updateApyar)
-// router.delete('/apyar/:id',apyarController.deleteApyar)
+router.get('/apyars',controller.apyarController.getAll)
+router.get('/apyar',controller.apyarController.getOne)
+router.post('/apyar',controller.apyarController.addOne)
+router.put('/apyar/:id',controller.apyarController.updateOne)
+router.delete('/apyar/:id',controller.apyarController.deleteOne)
 
 
 // //webnovel

@@ -30,8 +30,8 @@ const movieSchema = new mongoose.Schema({
         default:''
     },
     [movie_fields.FILE_URL]:{
-        type:String,
-        default:''
+        type:Array,
+        default:[]
     },
     [movie_fields.COVER_URL]:{
         type:String,

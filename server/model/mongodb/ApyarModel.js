@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const uuid = require('uuid')
+const config = require('../../../config')
 
 const apyar_fields = {
     ID:'id',
@@ -21,7 +22,7 @@ const apyar = new mongoose.Schema({
     },
     [apyar_fields.USER]:{
         type:String,
-        default:'Admin'
+        default:config.admin.username
     },
     [apyar_fields.AUTHOR]:{
         type:String,
