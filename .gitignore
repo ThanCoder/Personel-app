@@ -1,2 +1,10 @@
 node_modules
 test
+client/node_modules
+client/public
+client/src
+client/index.html
+client/package-lock.json
+client/package.json
+client/README.md
+client/vite.config.js
