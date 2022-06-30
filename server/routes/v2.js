@@ -25,6 +25,7 @@ router.delete('/novel-app/:id',controller.novelAppController.delete);
 //Movie
 router.get('/movies',controller.movieController.getAll)
 router.get('/movie',controller.movieController.getOne)
+router.get('/movie/id/:id',controller.movieController.getById)
 router.post('/movie',controller.movieController.addOne)
 router.put('/movie/:id',controller.movieController.updateOne)
 router.delete('/movie/:id',controller.movieController.deleteOne)
@@ -32,6 +33,7 @@ router.delete('/movie/:id',controller.movieController.deleteOne)
 // //Apyar
 router.get('/apyars',controller.apyarController.getAll)
 router.get('/apyar',controller.apyarController.getOne)
+router.get('/apyar/id/:id',controller.apyarController.getByid)
 router.post('/apyar',controller.apyarController.addOne)
 router.put('/apyar/:id',controller.apyarController.updateOne)
 router.delete('/apyar/:id',controller.apyarController.deleteOne)

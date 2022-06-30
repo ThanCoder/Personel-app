@@ -6,6 +6,7 @@ async function getAll(req, res) {
       start: 1,
       length: 15,
     };
+
     //limit
     if (req.query.limit !== undefined && req.query.limit !== "") {
       let limitQuery = req.query.limit.split(",");
@@ -18,14 +19,27 @@ async function getAll(req, res) {
       }
     }
     let calcStart = Math.round((limit.start * limit.length) - limit.length);
-
+    const { ID,TITLE,AUTHOR,COVER_URL,USER,DATE } = apyar_fields;
     let apyars = await ApyarModel.find()
+        .select({[ID]:1,[TITLE]:1,[USER]:1,[COVER_URL]:1,[AUTHOR]:1,[DATE]:1})
       .skip(calcStart)
       .limit(limit.length)
       .sort({ [apyar_fields.DATE]: -1 });
     res.status(200).json({ length: apyars.length, apyars, success: true });
   } catch (error) {
     res.status(500).json({ error, success: false });
+  }
+}
+
+async function getByid(req, res) {
+  try {
+    if(req.params.id === undefined || req.params.id === '') throw `"req.params.id not found or empty"`
+
+    const apyar = await ApyarModel.findById(req.params.id)
+
+    res.status(200).json({ apyar, success: true });
+  } catch (error) {
+    res.status(500).json({ error });
   }
 }
 
@@ -43,6 +57,7 @@ async function getOne(req, res) {
         throw `'key' or 'value' not found or empty`;
       key = searchArr[0];
       val = searchArr[1];
+      console.log(key,val);
       apyar = await ApyarModel.findOne({ [key]: [val] });
     }
     res.status(200).json({ apyar, success: true });
@@ -102,6 +117,7 @@ async function deleteOne(req, res) {
 module.exports = {
   getAll,
   getOne,
+  getByid,
   addOne,
   deleteOne,
   updateOne,

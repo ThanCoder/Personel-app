@@ -30,6 +30,19 @@ async function getAll(req, res) {
   }
 }
 
+async function getById(req, res) {
+  try {
+    if(req.params.id === undefined || req.params.id === '') throw `"req.params.id not found or empty"`
+
+    const movie = await MovieModel.findById(req.params.id)
+
+    res.status(200).json({ movie, success: true });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+}
+
+
 async function getOne(req, res) {
   try {
     let key = null;
@@ -104,6 +117,7 @@ async function deleteOne(req, res) {
 module.exports = {
   getAll,
   getOne,
+  getById,
   addOne,
   deleteOne,
   updateOne,
