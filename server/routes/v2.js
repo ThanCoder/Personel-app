@@ -6,7 +6,8 @@ const controller = require('../controller')
 router.get('/sharedata',controller.shareDataController.getAll)
 router.post('/sharedata',controller.shareDataController.addOne)
 router.put('/sharedata/:id',controller.shareDataController.updateOne)
-router.delete('/sharedata/:id',controller.shareDataController.deleteOne)
+router.delete('/sharedata',controller.shareDataController.deleteOne)
+router.delete('/sharedata/id/:id',controller.shareDataController.deleteById)
 
 //user
 router.get('/user',controller.userController.getUsers)

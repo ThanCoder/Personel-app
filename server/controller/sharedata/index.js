@@ -48,10 +48,30 @@ async function updateOne(req, res) {
 
 async function deleteOne(req, res) {
   try {
+      let search = {key:'id',value:null}
+
+      if(req.query.search === undefined || req.query.search === "") throw `"req.query.search" not found or empty`
+
+      let query = req.query.search.split(',');
+      if(query.length !== 2) throw `search query not found "key" or "value"`;
+      search.key = query[0];
+      search.value = query[1];
+
+      await ShareDataModel.deleteOne({[search.key]:[search.value]})
+      
+      res.status(200).json({[search.key]:search.value,success:true})
+
+  } catch (error) {
+    res.status(500).json({ error, success: false });
+  }
+}
+
+async function deleteById(req, res) {
+  try {
     if (req.params.id === undefined || req.params.id === "")
       throw 'params "id" not found or empty!';
 
-      await ShareDataModel.deleteOne({'id':req.params.id})
+      await ShareDataModel.deleteById(req.params.id)
       
       res.status(200).json({id:req.params.id,success:true})
 
@@ -64,5 +84,6 @@ module.exports = {
   getAll,
   updateOne,
   addOne,
+  deleteById,
   deleteOne,
 };

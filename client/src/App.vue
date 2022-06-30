@@ -48,10 +48,25 @@ img {
   box-shadow: 3px 3px 0 #333;
   width: 80%;
 }
-.fixed .content-center .header {
+@media (max-width: 500px){
+  .fixed .content-center {
+    width: 90%;
+  }
+}
+.fixed .content-center .header,
+.fixed .content-bottom .header {
   text-align: center;
   font-size: 1.4rem;
   margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.fixed .content-bottom {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  padding: 10px 0;
 }
 
 /* container */
@@ -93,14 +108,27 @@ img {
 .btn:hover {
   background: rgb(3, 100, 100);
 }
+/* background */
 .bg-red {
   background: rgb(230, 60, 60);
+  color: #fff;
 }
 .bg-red:hover {
   background: rgb(196, 41, 41);
 }
+.bg-teal {
+  background: teal;
+}
+
+/* text */
 .white-text {
   color: #fff;
+}
+.red-text {
+  color: rgb(230, 60, 60);
+}
+.teal-text {
+  color: teal;
 }
 
 /* message */
@@ -201,6 +229,17 @@ img {
   outline: none;
   border-bottom: 2px solid teal;
   min-height: 100px;
+}
+
+/* list */
+.list {
+  width: 100%;
+}
+.list .list-item {
+  font-size: 1.2rem;
+  padding: 4px 3px;
+  border-bottom: 1px solid teal;
+  cursor: pointer;
 }
 
 </style>

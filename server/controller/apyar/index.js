@@ -57,7 +57,6 @@ async function getOne(req, res) {
         throw `'key' or 'value' not found or empty`;
       key = searchArr[0];
       val = searchArr[1];
-      console.log(key,val);
       apyar = await ApyarModel.findOne({ [key]: [val] });
     }
     res.status(200).json({ apyar, success: true });
