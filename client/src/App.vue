@@ -50,7 +50,7 @@ img {
 }
 @media (max-width: 500px){
   .fixed .content-center {
-    width: 90%;
+    width: 99%;
   }
 }
 .fixed .content-center .header,
