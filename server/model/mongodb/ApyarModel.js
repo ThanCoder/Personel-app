@@ -8,6 +8,7 @@ const apyar_fields = {
     USER:'user',
     AUTHOR:'author',
     BODY:'body',
+    COVER_URL:'cover_url',
     DATE:'date'
 }
 
@@ -29,6 +30,10 @@ const apyar = new mongoose.Schema({
         default:'unknown'
     },
     [apyar_fields.BODY]:{
+        type:String,
+        default:''
+    },
+    [apyar_fields.COVER_URL]:{
         type:String,
         default:''
     },
