@@ -20,6 +20,7 @@ import Navbar from './components/partials/Navbar.vue'
 }
 img {
   width: 100%;
+  height: 100%;
 }
 .header {
   font-size: 1.5rem;

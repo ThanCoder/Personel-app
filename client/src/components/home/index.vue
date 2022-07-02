@@ -1,9 +1,9 @@
 <template>
   <div class="home-component">
-      <div class="header">home-component</div>
       <div class="btn-group">
         <router-link class="btn" to="/sharedata" >ShareData Files</router-link>
         <router-link class="btn" to="/novel-app" >Novel App</router-link>
+        <router-link class="btn" to="/movie" >Movie</router-link>
       </div>
   </div>
 </template>

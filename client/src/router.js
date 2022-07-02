@@ -20,6 +20,16 @@ const router = createRouter({
             component:() => import('./view/NovelApp.vue')
         },
         {
+            path:'/movie',
+            name:'movie',
+            component:() => import('./view/Movie.vue')
+        },
+        {
+            path:'/add-movie',
+            name:'add-movie',
+            component:() => import('./components/movie/AddMovie.vue')
+        },
+        {
             path:'/user',
             component:() => import("./view/User.vue"),
             children:[

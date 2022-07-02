@@ -3,8 +3,8 @@ const { ApyarModel, apyar_fields } = require("../../model");
 async function getAll(req, res) {
   try {
     let limit = {
-      start: 1,
-      length: 15,
+      page: 1,
+      length: 30,
     };
 
     //limit
@@ -14,15 +14,22 @@ async function getAll(req, res) {
         limit.length = limitQuery[0];
       }
       if (limitQuery.length === 2) {
-        limit.start = limitQuery[0];
+        limit.page = limitQuery[0];
         limit.length = limitQuery[1];
       }
     }
-    let calcStart = Math.round((limit.start * limit.length) - limit.length);
-    const { ID,TITLE,AUTHOR,COVER_URL,USER,DATE } = apyar_fields;
+    limit.page = Math.round((limit.page * limit.length) - limit.length);
+    const { ID, TITLE, AUTHOR, COVER_URL, USER, DATE } = apyar_fields;
     let apyars = await ApyarModel.find()
-        .select({[ID]:1,[TITLE]:1,[USER]:1,[COVER_URL]:1,[AUTHOR]:1,[DATE]:1})
-      .skip(calcStart)
+      .select({
+        [ID]: 1,
+        [TITLE]: 1,
+        [USER]: 1,
+        [COVER_URL]: 1,
+        [AUTHOR]: 1,
+        [DATE]: 1,
+      })
+      .skip(limit.page)
       .limit(limit.length)
       .sort({ [apyar_fields.DATE]: -1 });
     res.status(200).json({ length: apyars.length, apyars, success: true });
@@ -33,9 +40,10 @@ async function getAll(req, res) {
 
 async function getByid(req, res) {
   try {
-    if(req.params.id === undefined || req.params.id === '') throw `"req.params.id not found or empty"`
+    if (req.params.id === undefined || req.params.id === "")
+      throw `"req.params.id not found or empty"`;
 
-    const apyar = await ApyarModel.findById(req.params.id)
+    const apyar = await ApyarModel.findById(req.params.id);
 
     res.status(200).json({ apyar, success: true });
   } catch (error) {
